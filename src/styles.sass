@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700,900')
+@import "variables"
+
+html, body
+  min-height: 100%
+  margin: 0
+body
+  font-family: Montserrat,sans-serif
+  color: #121212
+  width: 100vh
+  background: url("~assets/images/footer.png") no-repeat bottom center
+.container
+  position: absolute
+  margin: auto
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  width: 700px
+  height: 200px
+  border: 2px solid $grey-dark
+a
+  text-decoration: none
+  color: inherit
+.tabs
+  display: grid
+  grid-template-columns: 50% auto
+  height: 80px
+  border-bottom: 2px solid $grey-dark
+.tab
+  :hover
+    color: $blue
+.active
+  border-bottom: 6px solid $blue
+
+
