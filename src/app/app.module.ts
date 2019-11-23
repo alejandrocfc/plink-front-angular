@@ -7,6 +7,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { ChangeComponent } from './change/change.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ChangeComponent } from './change/change.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

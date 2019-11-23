@@ -2,13 +2,20 @@
   <div class="form">
     <h3>Realizar cambio</h3>
     <p>Seleccione las monedas</p>
-    <input type="text">
-    <select (change)="filterForeCasts($event.target.value)">
-      <option value="0">--All--</option>
-    </select>
-    <select (change)="filterForeCasts($event.target.value)">
-      <option value="0">--All--</option>
-    </select>
-    <input type="text" disabled [readOnly]="true">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input type="text" formControlName="qty">
+      <select formControlName="from">
+        <option *ngFor="let option of options" value={{option.value}}>
+          {{option.label}}
+        </option>
+      </select>
+      <select formControlName="to">
+        <option *ngFor="let option of options" value={{option.value}}>
+          {{option.label}}
+        </option>
+      </select>
+      <input *ngIf="!result" type="submit" value="CONVERTIR">
+      <input *ngIf="result" type="text" disabled [readOnly]="true" value="{{result}}">
+    </form>
   </div>
 </div>

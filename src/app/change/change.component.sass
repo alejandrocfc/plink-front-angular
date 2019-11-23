@@ -1,9 +1,10 @@
+@import "../../variables"
 .content-form
-  width: 60%
+  width: 30%
   margin: 0 auto
   padding: 20px
   text-align: center
-input[type=text], select
+input[type=text], input[type=submit], select
     width: 100%
     padding: 12px 20px
     margin: 8px 0
@@ -11,3 +12,13 @@ input[type=text], select
     border: 1px solid #ccc
     border-radius: 50px
     box-sizing: border-box
+input[type=text]
+  text-align: center
+select
+  text-align-last: center
+input[type=submit]
+  cursor: pointer
+  color: white
+  font-weight: bold
+  border-color: $blue
+  background-color: lighten($blue, 30%)

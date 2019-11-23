@@ -23,6 +23,21 @@ export class CoinsService {
       .pipe(retry(1), catchError(this.errorHandle));
   }
 
+  GetDigital(): Observable<any> {
+    return this.httpClient.get(`${this.apiURL}/digital-currency-symbols`, this.httpOptions)
+      .pipe(retry(1), catchError(this.errorHandle));
+  }
+
+  GetFiat(): Observable<any> {
+    return this.httpClient.get(`${this.apiURL}/fiat-currency-symbols`, this.httpOptions)
+      .pipe(retry(1), catchError(this.errorHandle));
+  }
+
+  ChangeCoin(qty, from, to): Observable<any> {
+    return this.httpClient.get(`${this.apiURL}/convert?qty=${qty}&from=${from}&to=${to}`, this.httpOptions)
+      .pipe(retry(1), catchError(this.errorHandle));
+  }
+
   // Error handling
   errorHandle(error) {
     let errorMessage = '';
