@@ -1,1 +1,14 @@
-<p>change works!</p>
+<div class="content-form">
+  <div class="form">
+    <h3>Realizar cambio</h3>
+    <p>Seleccione las monedas</p>
+    <input type="text">
+    <select (change)="filterForeCasts($event.target.value)">
+      <option value="0">--All--</option>
+    </select>
+    <select (change)="filterForeCasts($event.target.value)">
+      <option value="0">--All--</option>
+    </select>
+    <input type="text" disabled [readOnly]="true">
+  </div>
+</div>
