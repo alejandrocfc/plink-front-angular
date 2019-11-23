@@ -44,7 +44,7 @@ export class CoinsService {
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message ? error.error.message : error.message}`;
     }
     return throwError(errorMessage);
   }
