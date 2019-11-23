@@ -6,12 +6,12 @@
       <input type="text" formControlName="qty">
       <select formControlName="from">
         <option *ngFor="let option of options" value={{option.value}}>
-          {{option.label}}
+          {{option.value}} - {{option.label}}
         </option>
       </select>
       <select formControlName="to">
         <option *ngFor="let option of options" value={{option.value}}>
-          {{option.label}}
+          {{option.value}} - {{option.label}}
         </option>
       </select>
       <input *ngIf="!result" type="submit" value="CONVERTIR">
