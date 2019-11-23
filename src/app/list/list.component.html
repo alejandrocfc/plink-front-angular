@@ -14,7 +14,5 @@
       <div class="item"><img src="assets/images/shuffle.png" (click)="change(coin)"></div>
     </div>
   </div>
-  <div *ngIf="show.length<=0 && !loading">
-    <p>{{message}}</p>
-  </div>
+  <div class="msg" *ngIf="show.length<=0 && !loading">{{message}}</div>
 </div>

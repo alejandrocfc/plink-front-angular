@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {CoinsService} from '../coins.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ListComponent implements OnInit {
 
   constructor(
     public coinService: CoinsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,18 +30,21 @@ export class ListComponent implements OnInit {
   loadCoins() {
     return this.coinService.GetCoins().subscribe((data) => {
       if (data.success) {
-        const coins = data.prices.map(({name, price, crypto}) => ({name, price, crypto: crypto === '1' }));
+        const coins = data.prices.map(({id_currency, name, price, crypto}) => ({id: id_currency, name, price, crypto: crypto === '1' }));
         this.coins = coins;
         this.show = coins.slice(0, 20);
       } else {
         this.message = data.error;
       }
       this.loading = false;
-    });
+    }, (error => {
+      this.message = error;
+      this.loading = false;
+    }));
   }
 
   change(coin) {
-    console.log(coin);
+    this.router.navigateByUrl('/change', {state: {data: coin.id}});
   }
 
   onScroll() {
