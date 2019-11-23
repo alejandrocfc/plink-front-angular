@@ -11,18 +11,48 @@
   display: flex
 .list-header
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
+  border: 1px solid rgba(0, 0, 0, 0.14)
   margin-bottom: 2em
 .list-header div
   height: 40px
+  display: flex
+  align-items: flex-end
+.list-header div span
+  padding-bottom: 6px
 .list-coins
   height: 300px
   overflow-y: auto
 .item
-  text-align: center
   flex: 1
-  width: 20px
-  height: 20px
-  padding: 4px
 .coin
+  border: 1px solid rgba(0, 0, 0, 0.14)
   margin-bottom: 2em
+  height: 40px
+  div
+    display: flex
+    align-items: center
+.price
+  color: $blue
+  font-weight: bold
+.crypto
+  align-items: center
+  display: flex
+  color: $red
+  &:before
+    content: " "
+    display: block
+    margin: 8px
+    height: 10px
+    width: 10px
+    border-radius: 50px
+    background-color: $red
+.is-crypto
+  color: $green
+  &:before
+    background-color: $green
+img
+  width: 20px
+  margin-left: 2em
+  &:hover
+    cursor: pointer
 

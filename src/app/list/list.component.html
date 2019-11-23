@@ -1,124 +1,20 @@
 <div class="container-list">
   <div class="list-header">
-    <div class="item">Nombre</div>
-    <div class="item">Precio</div>
-    <div class="item">Criptomoneda</div>
-    <div class="item">Convertir</div>
+    <div class="item"><span>Nombre</span></div>
+    <div class="item"><span>Precio</span></div>
+    <div class="item"><span>Criptomoneda</span></div>
+    <div class="item"><span>Convertir</span></div>
   </div>
-  <div class="list-coins">
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
+  <div *ngIf="loading">Cargando...</div>
+  <div *ngIf="show.length>0" class="list-coins" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
+    <div class="coin" *ngFor="let coin of show">
+      <div class="item">{{coin.name}}</div>
+      <div class="item price">{{coin.price | currency}}</div>
+      <div class="item crypto" [ngClass]="{'is-crypto': coin.crypto}">{{coin.crypto? 'SI': 'NO'}}</div>
+      <div class="item"><img src="assets/images/shuffle.png" (click)="change(coin)"></div>
     </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
-    <div class="coin">
-      <div class="item">a</div>
-      <div class="item">B</div>
-      <div class="item">C</div>
-      <div class="item">D</div>
-    </div>
+  </div>
+  <div *ngIf="show.length<=0 && !loading">
+    <p>{{message}}</p>
   </div>
 </div>
