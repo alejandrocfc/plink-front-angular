@@ -14,11 +14,13 @@ export class ChangeComponent implements OnInit {
   options = [];
   result;
   loading;
+  fetch;
   message;
 
   constructor(
     public coinService: CoinsService,
     private formBuilder: FormBuilder) {
+    this.fetch = true;
     this.form = this.formBuilder.group({
       from: [''],
       to: [''],
@@ -29,7 +31,6 @@ export class ChangeComponent implements OnInit {
   ngOnInit() {
     const digital = this.coinService.GetDigital();
     const fiat = this.coinService.GetFiat();
-
     forkJoin([digital, fiat]).subscribe(results => {
       const digitalCurrencies = results[0];
       const fiatCurrencies = results[1];
@@ -39,11 +40,19 @@ export class ChangeComponent implements OnInit {
           const info = Object.entries(item)[0];
           return {value: info[0], label: info[1]};
         });
-        this.form.controls.from.patchValue('BTC');
+        if (window.history.state.data) {
+          this.form.controls.from.patchValue(window.history.state.data);
+        } else {
+          this.form.controls.from.patchValue('BTC');
+        }
         this.form.controls.to.patchValue('USD');
       } else {
         this.message = digitalCurrencies.error + fiatCurrencies.error;
       }
+      this.fetch = false;
+    }, error => {
+      this.fetch = false;
+      this.message = error;
     });
   }
 
@@ -58,6 +67,13 @@ export class ChangeComponent implements OnInit {
       }
       this.loading = false;
     });
+  }
+
+  reset() {
+    this.result = null;
+    this.form.controls.to.patchValue('USD');
+    this.form.controls.from.patchValue('BTC');
+    this.form.controls.qty.patchValue('');
   }
 
 }
