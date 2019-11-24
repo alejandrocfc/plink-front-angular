@@ -59,7 +59,8 @@ export class ChangeComponent implements OnInit {
   submit() {
     this.loading = true;
     const {qty, from, to} = this.form.value;
-    this.coinService.ChangeCoin( qty, from, to).subscribe((data) => {
+    const value = qty.replace(/[$]|,/g, '');
+    this.coinService.ChangeCoin( value, from, to).subscribe((data) => {
       if (data.success) {
         this.result = data.to_quantity;
       } else {

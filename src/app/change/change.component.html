@@ -4,7 +4,7 @@
     <p>Seleccione las monedas</p>
     <p *ngIf="fetch">Cargando...</p>
     <form *ngIf="!fetch"  [formGroup]="form" (ngSubmit)="submit()">
-      <input type="text" formControlName="qty">
+      <input type="text" [cleave]="{ prefix: '$', numeral: true, numeralThousandsGroupStyle: 'thousand'}" formControlName="qty">
       <select formControlName="from">
         <option *ngFor="let option of options" value={{option.value}}>
           {{option.value}} - {{option.label}}
@@ -16,7 +16,7 @@
         </option>
       </select>
       <input *ngIf="!result" type="submit" value="CONVERTIR">
-      <input class="result" *ngIf="result" type="text" disabled [readOnly]="true" value="{{result}}">
+      <input class="result" *ngIf="result" type="text" disabled [readOnly]="true" [cleave]="{ prefix: '$', numeral: true, numeralThousandsGroupStyle: 'thousand'}" value="{{result}}">
       <p *ngIf="result" (click)="reset()">Nuevo cambio</p>
     </form>
     <div class="msg" *ngIf="!fetch && message">{{message}}</div>

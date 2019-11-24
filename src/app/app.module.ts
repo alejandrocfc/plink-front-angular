@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {NgxCleaveDirectiveModule} from 'ngx-cleave-directive';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
@@ -20,7 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCleaveDirectiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]
