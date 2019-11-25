@@ -10,6 +10,7 @@
           {{option.value}} - {{option.label}}
         </option>
       </select>
+      <img src="assets/images/exchange.png" (click)="change()">
       <select formControlName="to">
         <option *ngFor="let option of options" value={{option.value}}>
           {{option.value}} - {{option.label}}

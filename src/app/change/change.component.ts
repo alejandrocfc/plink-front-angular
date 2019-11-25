@@ -77,4 +77,10 @@ export class ChangeComponent implements OnInit {
     this.form.controls.qty.patchValue('');
   }
 
+  change() {
+    const {from, to} = this.form.value;
+    this.form.controls.to.patchValue(from);
+    this.form.controls.from.patchValue(to);
+  }
+
 }
