@@ -4,7 +4,7 @@
     <p>Seleccione las monedas</p>
     <p *ngIf="fetch">Cargando...</p>
     <form *ngIf="!fetch"  [formGroup]="form" (ngSubmit)="submit()">
-      <input type="text" [cleave]="{ prefix: '$', numeral: true, numeralThousandsGroupStyle: 'thousand'}" formControlName="qty">
+      <input type="text" [cleave]="{ prefix: '$', numeral: true, numeralThousandsGroupStyle: 'thousand'}" formControlName="qty" autofocus>
       <select formControlName="from">
         <option *ngFor="let option of options" value={{option.value}}>
           {{option.value}} - {{option.label}}
